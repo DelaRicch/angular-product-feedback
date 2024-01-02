@@ -45,9 +45,16 @@
       </div>
     </app-button>
 </div>
-{{modalVal}}
 <ng-container *ngIf="modalVal">
   <app-modal 
+  @fadeIn
+@fadeOut
   (onClick)="openModal($event)" 
-  [modalDisplay]="modalVal" />
+  [modalDisplay]="modalVal"
+  modalClass="top-[15%] left-[30rem]"
+  >
+ <app-dropdown 
+ [modalDisplay]="modalVal"
+ [dropdownItems]="dropdownItems" />
+</app-modal >
 </ng-container>

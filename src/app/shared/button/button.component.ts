@@ -11,8 +11,6 @@ import { ButtonType } from '@/types';
 
 
 export class ButtonComponent {
-  constructor() { }
-
 
 @Input() backgroundColor: string = '';
 @Input() color: string = '';
