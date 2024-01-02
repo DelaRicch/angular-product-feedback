@@ -5,6 +5,7 @@ import { NoFeedbackComponent } from '../no-feedback/no-feedback.component';
 import { ButtonComponent } from '../shared/button/button.component';
 import { PlusIconComponent } from '../icons/plus-icon/plus-icon.component';
 import { Router } from '@angular/router';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-suggestions',
@@ -14,6 +15,7 @@ import { Router } from '@angular/router';
     NoFeedbackComponent,
     ButtonComponent,
     PlusIconComponent,
+    SidebarComponent,
     NgIf
   ],
   templateUrl: './suggestions.component.html',

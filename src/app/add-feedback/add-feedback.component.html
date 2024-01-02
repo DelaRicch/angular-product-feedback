@@ -58,7 +58,7 @@
                 </div>
             </app-button>
             @if(displayFeatures) {
-                <div class="absolute bg-white w-full top-28">
+                <div class="absolute bg-white w-full top-28 z-40">
                     <app-dropdown [selectedItem]="selectedCategory" (onClick)="selectCategory($event)" [dropdownItems]="categories" />
                 </div>
             }

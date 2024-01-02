@@ -1,0 +1,8 @@
+<div class="w-full h-max p-6 flex gap-2 flex-wrap bg-white rounded-lg">
+    @for(feature of features; track feature) {
+        <button 
+        (click)="onSelectFeature(feature)" 
+        [class]="(selectedFeature === feature) ? 'bg-[#4661E6] text-white' : 'bg-button-white text-[#4661E6]'"
+        class="text-sm font-semibold rounded-lg px-3 py-0.5">{{feature}}</button>
+    }
+</div>
