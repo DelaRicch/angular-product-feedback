@@ -38,7 +38,9 @@
       </div>
     </app-button>
   </div>
-    <app-button backgroundColor="#AD1FEA">
+    <app-button 
+    (onClick)="addFeedback($event)"
+    backgroundColor="#AD1FEA">
       <div class="flex items-center gap-2">
         <app-plus-icon color="#F2F4FE" />
         <span>Add Feedback</span>

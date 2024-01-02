@@ -6,6 +6,7 @@ import { NgIf } from '@angular/common';
 import { ModalComponent } from '../modal/modal.component';
 import { ButtonType } from '@/types';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { Router } from '@angular/router';
 
 const enterTransition = transition(':enter', [
   style({ opacity: 0  }),
@@ -30,6 +31,7 @@ const fadeOut = trigger('fadeOut', [exitTransition]);
 })
 export class SuggestionsHeaderComponent {
 
+  constructor(private router: Router) { }
 ButtonType = ButtonType;
   modalVal = false;
 
@@ -37,6 +39,9 @@ ButtonType = ButtonType;
 
   openModal(val: boolean) {
     this.modalVal = val;
-    console.log(val, "val")
+  }
+
+  addFeedback(event: boolean) {
+    this.router.navigate(['/add-feedback']);
   }
 }
