@@ -1,7 +1,7 @@
 <section class="flex flex-col w-[90vw] mx-auto lg:flex-row md:gap-6">
-        <app-sidebar />
-    <div class="flex flex-col gap-6 w-full h-full min-h-[70vh]">
-        <app-suggestions-header></app-suggestions-header>
+        <app-sidebar (menuToggle)="menuToggle($event)" />
+    <div class="flex flex-col gap-6 w-full min-h-[70vh] relative">
+        <app-suggestions-header />
         <section class="flex items-center justify-center bg-white rounded-lg">
             <div *ngIf="feedbacks.length; else noFeedback"></div>
            <ng-template #noFeedback >
@@ -17,7 +17,9 @@
                 </div>
                 </div>
            </ng-template>
-            
         </section>
+        <ng-container *ngIf="isMenuAppear">
+                <app-menu />
+        </ng-container>
     </div>
 </section>
