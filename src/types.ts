@@ -5,3 +5,8 @@ export enum ButtonType {
 }
 
 // Types 
+export interface RoadmapProps {
+  label: string;
+  color: string;
+  quantity: number;
+}

@@ -10,6 +10,9 @@ module.exports = {
         "gray": "#647196",
         "button-white": "#F2F4FE",
         "error": "#D73737"
+      },
+      backgroundImage: {
+        
       }
     },
   },

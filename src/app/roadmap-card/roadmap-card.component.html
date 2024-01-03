@@ -1,1 +1,17 @@
-<p>roadmap-card works!</p>
+<div class="w-full h-[11rem] p-6 bg-white rounded-lg hidden md:flex flex-col gap-6">
+    <div class="flex items-center justify-between">
+        <span class="capitalize text-[#3A4374] text-lg font-bold">roadmap</span>
+        <a class="text-gray text-sm underline font-semibold" [routerLink]="['']">View</a>
+    </div>
+    <div class="flex flex-col gap-2">
+        @for(roadmap of roadmaps; track roadmap.label){
+        <div [id]="roadmap.label" class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span [style]="{backgroundColor: roadmap.color}" class="w-2 h-2 rounded-full"></span>
+                    <span class="capitalize">{{roadmap.label}}</span>
+                </div>
+                <span class="text-gray font-bold">{{roadmap.quantity}}</span>
+            </div>
+        }
+    </div>
+</div>
