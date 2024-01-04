@@ -10,7 +10,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './roadmap-card.component.css'
 })
 export class RoadmapCardComponent {
-  constructor() { }
 
   roadmaps: RoadmapProps[] = [
     {label: 'planned', color: '#F49F85', quantity: 0},

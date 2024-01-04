@@ -1,15 +1,15 @@
 import { ButtonType } from '@/types';
 import { Component } from '@angular/core';
-import { GoBackButtonComponent } from '../go-back-button/go-back-button.component';
-import { InputComponent } from '../input/input.component';
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ButtonComponent } from '../shared/button/button.component';
 import { Router } from '@angular/router';
+import { GoBackButtonComponent } from '../go-back-button/go-back-button.component';
+import { InputComponent } from '../input/input.component';
+import { ButtonComponent } from '@/app/shared/button/button.component';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { ModalComponent } from '../modal/modal.component';
 

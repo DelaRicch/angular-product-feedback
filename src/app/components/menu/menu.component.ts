@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { FeatureCardComponent } from '../feature-card/feature-card.component';
 import { RoadmapCardComponent } from '../roadmap-card/roadmap-card.component';
 
@@ -7,8 +7,6 @@ import { RoadmapCardComponent } from '../roadmap-card/roadmap-card.component';
   standalone: true,
   imports: [FeatureCardComponent, RoadmapCardComponent],
   templateUrl: './menu.component.html',
-  styleUrl: './menu.component.css'
+  styleUrl: './menu.component.css',
 })
-export class MenuComponent {
-
-}
+export class MenuComponent {}
