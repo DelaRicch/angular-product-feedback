@@ -1,3 +1,4 @@
+import { environment } from '@/environments/environment.development';
 import { Feedback } from '@/types';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -6,7 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class FeedbackService {
-  private apiUrl = 'https://api.example.com/data';
+  private apiUrl = environment.apiUrl + 'feedbacks';
 
   constructor(private http: HttpClient) { }
 

@@ -1,25 +1,37 @@
-<section class="flex flex-col w-[90vw] mx-auto lg:flex-row md:gap-6">
-        <app-sidebar (menuToggle)="menuToggle($event)" />
-    <div class="flex flex-col gap-6 w-full min-h-[70vh] relative">
-        <app-suggestions-header />
-        <section class="flex items-center justify-center bg-white rounded-lg">
-            <div *ngIf="feedbacks.length; else noFeedback"></div>
-           <ng-template #noFeedback >
-            <div class="flex flex-col gap-10 items-center my-[5vh] lg:my-[12vh]">
-                <app-no-feedback />
-                <div class="w-[11rem]">
-                    <app-button (onClick)="addFeedback($event)" backgroundColor="#AD1FEA">
-                        <div class="flex items-center gap-2">
-                            <app-plus-icon color="#F2F4FE" />
-                            <span>Add Feedback</span>
-                        </div>
-                    </app-button>
-                </div>
-                </div>
-           </ng-template>
-        </section>
-        <ng-container *ngIf="isMenuAppear">
-                <app-menu />
-        </ng-container>
-    </div>
+<section class="mx-auto flex w-[90vw] flex-col md:gap-6 lg:flex-row">
+  <app-sidebar (menuToggle)="menuToggle($event)" />
+  <div class="relative flex min-h-[70vh] w-full flex-col gap-6">
+    <app-suggestions-header />
+    
+      @if (loading$ | async) {
+        <div>loading...</div>
+      }
+
+      <!-- Feedback data  -->
+      @if(feedbacks$){
+          <div class="flex flex-col gap-5">
+              <app-feedback-card />
+            </div>
+        }
+        <section
+        class="flex flex-col items-center justify-center rounded-lg bg-white"
+      >
+      @if(!feedbacks$ && !loading$) {
+          <div class="my-[5vh] flex flex-col items-center gap-10 lg:my-[12vh]">
+              <app-no-feedback />
+              <div class="w-[11rem]">
+                  <app-button (onClick)="addFeedback($event)" backgroundColor="#AD1FEA">
+                    <div class="flex items-center gap-2">
+                        <app-plus-icon color="#F2F4FE" />
+                        <span>Add Feedback</span>
+                    </div>
+                </app-button>
+            </div>
+        </div>
+        }
+    </section>
+    <ng-container *ngIf="isMenuAppear">
+      <app-menu />
+    </ng-container>
+  </div>
 </section>
