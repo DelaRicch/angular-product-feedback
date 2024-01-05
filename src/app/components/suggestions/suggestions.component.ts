@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, JsonPipe, NgFor, NgIf } from '@angular/common';
 
 import { Router } from '@angular/router';
 import { SuggestionsHeaderComponent } from '../suggestions-header/suggestions-header.component';
@@ -14,6 +14,7 @@ import { Observable } from 'rxjs';
 import { Feedback } from '@/types';
 import { selectFeedback, selectFeedbackError, selectFeedbackLoading } from '@/app/store/feedback/feedback.selectors';
 import { FeedbackCardComponent } from '@/app/feedback-card/feedback-card.component';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'app-suggestions',
@@ -26,8 +27,11 @@ import { FeedbackCardComponent } from '@/app/feedback-card/feedback-card.compone
     SidebarComponent,
     MenuComponent,
     FeedbackCardComponent,
+    LoadingComponent,
     NgIf,
+    NgFor,
     AsyncPipe,
+    JsonPipe,
   ],
   templateUrl: './suggestions.component.html',
   styleUrl: './suggestions.component.css',
@@ -54,5 +58,6 @@ export class SuggestionsComponent implements OnInit {
       this.feedbacks$ = this.store.select(selectFeedback);
       this.loading$ = this.store.select(selectFeedbackLoading);
       this.error$ = this.store.select(selectFeedbackError);
+      
   }
 }

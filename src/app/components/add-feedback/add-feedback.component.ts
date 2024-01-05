@@ -1,4 +1,4 @@
-import { ButtonType } from '@/types';
+import { ButtonType, Feedback } from '@/types';
 import { Component } from '@angular/core';
 import {
   FormControl,
@@ -12,6 +12,7 @@ import { InputComponent } from '../input/input.component';
 import { ButtonComponent } from '@/app/shared/button/button.component';
 import { DropdownComponent } from '../dropdown/dropdown.component';
 import { ModalComponent } from '../modal/modal.component';
+import { FeedbackService } from '@/app/services/feedback.service';
 
 @Component({
   selector: 'app-add-feedback',
@@ -39,15 +40,24 @@ export class AddFeedbackComponent {
     feedback: new FormControl('', [Validators.required]),
   });
 
-  constructor(private router: Router) {}
-
-  cancelFeedBack(event: boolean) {
-    this.router.navigate(['']);
-  }
+  constructor(
+    private router: Router,
+    private feedbackService: FeedbackService,
+  ) {}
 
   addFeedback(event: SubmitEvent) {
     event.preventDefault();
-    console.log(this.formGroup.value);
+    const { title, category, feedback } = this.formGroup.value;
+    const feedbackData: Feedback = {
+      title: title ?? '',
+      category: category ?? '',
+      details: feedback ?? '',
+    };
+    this.feedbackService.createFeedback(feedbackData);
+  }
+
+  cancelFeedBack(event: boolean) {
+    this.router.navigate(['']);
   }
 
   toggleDisplayFeatures(event: boolean) {

@@ -11,13 +11,19 @@ export interface RoadmapProps {
   quantity: number;
 }
 
+export interface FeedbackResponse {
+  feedback: Feedback[]
+  success: string
+}
+
 export interface Feedback {
-  id: number;
+  id?: string;
   title: string;
   category: string;
-  description: string;
-  status: string;
-  created_at: string;
+  details: string;
+  status?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface FeedbackState {
