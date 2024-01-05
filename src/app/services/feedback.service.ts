@@ -13,9 +13,7 @@ export class FeedbackService {
   constructor(private http: HttpClient) { }
 
   createFeedback(data: Feedback) {
-    const res = this.http.post(this.apiUrl + 'add-feedback', data)
-    console.log(res)
-    console.log(data)
+    return this.http.post(this.apiUrl + 'add-feedback', data)
   }
 
   loadFeadback() {

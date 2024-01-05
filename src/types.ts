@@ -21,6 +21,7 @@ export interface Feedback {
   title: string;
   category: string;
   details: string;
+  Upvotes?: number;
   status?: string;
   createdAt?: string;
   updatedAt?: string;

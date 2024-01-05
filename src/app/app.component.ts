@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +10,7 @@ import { initFlowbite } from 'flowbite';
   styleUrl: './app.component.css',
   
 })
-export class AppComponent implements OnInit {
+export class AppComponent  {
   title = 'product-feedback';
 
-  ngOnInit(): void {
-      initFlowbite();
-  }
 }

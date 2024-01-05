@@ -1,12 +1,15 @@
 import { DropdownComponent } from '../dropdown/dropdown.component';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { PlusIconComponent } from '../../icons/plus-icon/plus-icon.component';
-import { NgIf } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { ModalComponent } from '../modal/modal.component';
-import { ButtonType } from '@/types';
+import { ButtonType, Feedback } from '@/types';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { selectFeedback } from '@/app/store/feedback/feedback.selectors';
 
 const enterTransition = transition(':enter', [
   style({ opacity: 0 }),
@@ -29,13 +32,16 @@ const fadeOut = trigger('fadeOut', [exitTransition]);
     ModalComponent,
     NgIf,
     DropdownComponent,
+    AsyncPipe,
   ],
   templateUrl: './suggestions-header.component.html',
   styleUrl: './suggestions-header.component.css',
   animations: [fadeIn, fadeOut],
 })
-export class SuggestionsHeaderComponent {
-  constructor(private router: Router) {}
+export class SuggestionsHeaderComponent implements OnInit {
+  feedbacks$: Observable<Feedback[]> = new Observable<Feedback[]>();
+
+  constructor(private router: Router, private store: Store) {}
   ButtonType = ButtonType;
   modalVal = false;
 
@@ -52,5 +58,10 @@ export class SuggestionsHeaderComponent {
 
   addFeedback(event: boolean) {
     this.router.navigate(['/add-feedback']);
+  }
+
+  ngOnInit(): void {
+    this.feedbacks$ = this.store.select(selectFeedback);
+      
   }
 }

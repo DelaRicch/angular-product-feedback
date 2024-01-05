@@ -13,7 +13,7 @@
               </clipPath>
             </defs>
           </svg>
-      <span class="text-xl font-bold text-white">6 Suggestions</span>
+      <span class="text-xl font-bold text-white">{{(feedbacks$ | async)?.length}} Suggestions</span>
     </div>
     <app-button 
     [value]="modalVal" 

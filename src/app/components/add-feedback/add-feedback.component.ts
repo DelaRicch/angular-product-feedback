@@ -33,6 +33,7 @@ export class AddFeedbackComponent {
   ButtonType = ButtonType;
   displayFeatures = false;
   selectedCategory = this.categories[0];
+  isSubmitting = false;
 
   formGroup = new FormGroup({
     title: new FormControl('', [Validators.required]),
@@ -47,13 +48,25 @@ export class AddFeedbackComponent {
 
   addFeedback(event: SubmitEvent) {
     event.preventDefault();
+    this.isSubmitting = true;
     const { title, category, feedback } = this.formGroup.value;
     const feedbackData: Feedback = {
       title: title ?? '',
       category: category ?? '',
       details: feedback ?? '',
     };
-    this.feedbackService.createFeedback(feedbackData);
+  this.feedbackService.createFeedback(feedbackData).subscribe(
+    {
+      next: (v) => console.log(v),
+      error: (e) => console.error(e),
+      complete: () => {
+        this.isSubmitting = false;
+        this.formGroup.reset();
+        this.router.navigate(['']);
+      }
+    }
+  )
+    ;
   }
 
   cancelFeedBack(event: boolean) {

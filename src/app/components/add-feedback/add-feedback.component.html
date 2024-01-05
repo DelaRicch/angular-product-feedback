@@ -69,8 +69,15 @@
             <app-button (onClick)="cancelFeedBack($event)" backgroundColor="#3A4374">
                Cancel 
             </app-button>
-            <app-button [disabled]="formGroup.invalid" [type]="ButtonType.Submit" backgroundColor="#AD1FEA">
-                Add Feedback
+            <app-button [disabled]="formGroup.invalid || isSubmitting" [type]="ButtonType.Submit" backgroundColor="#AD1FEA">
+              @if (isSubmitting) {
+                <span>
+                  <i class="fa fa-spinner fa-spin"></i> Submitting...
+                </span>
+              }
+              @else {
+                <span>Add Feedback</span>
+              }
              </app-button>
         </div>
     </div>

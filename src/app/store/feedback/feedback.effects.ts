@@ -1,7 +1,6 @@
-// data.effects.ts
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY, of } from 'rxjs';
+import { of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 import * as FeedbackActions from './feedback.actions';
 import { FeedbackService } from '@/app/services/feedback.service';
