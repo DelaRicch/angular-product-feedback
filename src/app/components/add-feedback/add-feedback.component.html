@@ -73,7 +73,7 @@
           #category
           [model]="categories"
           [popup]="true"
-          styleClass="bg-white w-[26.5rem] flex flex-col mt-5 shadow-lg shadow-black/40 rounded-lg"
+          styleClass="bg-white w-9/12 sm:w-[26.5rem] flex flex-col mt-5 shadow-lg shadow-black/40 rounded-lg"
         >
           <ng-template pTemplate="item" let-item>
             <p-button
@@ -109,17 +109,10 @@
       />
 
       <div class="flex flex-col gap-4 sm:flex-row sm:justify-end">
-        <app-button
-          (onClick)="cancelFeedBack($event)"
-          backgroundColor="#3A4374"
-        >
+        <p-button type="button" styleClass="w-full h-[2.7rem] rounded-lg px-6 font-bold text-sm text-button-white transition-all duration-300 ease-linear hover:opacity-80 disabled:opacity-75 disabled:cursor-not-allowed bg-[#3A4374]">
           Cancel
-        </app-button>
-        <app-button
-          [disabled]="formGroup.invalid || isSubmitting"
-          [type]="ButtonType.Submit"
-          backgroundColor="#AD1FEA"
-        >
+        </p-button>
+        <p-button type="submit" styleClass="w-full h-[2.7rem] rounded-lg px-6 font-bold text-sm text-button-white transition-all duration-300 ease-linear hover:opacity-80 disabled:opacity-75 disabled:cursor-not-allowed bg-[#AD1FEA]">
           @if (isSubmitting) {
             <span>
               <i class="fa fa-spinner fa-spin"></i> Creating Feedback...
@@ -127,7 +120,7 @@
           } @else {
             <span>Add Feedback</span>
           }
-        </app-button>
+        </p-button>
       </div>
     </div>
   </form>

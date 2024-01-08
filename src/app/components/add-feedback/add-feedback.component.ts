@@ -9,7 +9,6 @@ import {
 import { Router } from '@angular/router';
 import { GoBackButtonComponent } from '../go-back-button/go-back-button.component';
 import { InputComponent } from '../input/input.component';
-import { ButtonComponent } from '@/app/shared/button/button.component';
 import { ModalComponent } from '../modal/modal.component';
 import { FeedbackService } from '@/app/services/feedback.service';
 import { MenuModule } from 'primeng/menu';
@@ -23,7 +22,6 @@ import { MenuItem } from 'primeng/api';
     GoBackButtonComponent,
     InputComponent,
     ReactiveFormsModule,
-    ButtonComponent,
     ModalComponent,
     MenuModule,
     ButtonModule

@@ -12,8 +12,12 @@ import { Store } from '@ngrx/store';
 import * as FeedbackActions from '@/app/store/feedback/feedback.actions';
 import { Observable } from 'rxjs';
 import { Feedback } from '@/types';
-import { selectFeedback, selectFeedbackError, selectFeedbackLoading } from '@/app/store/feedback/feedback.selectors';
-import { FeedbackCardComponent } from '@/app/feedback-card/feedback-card.component';
+import {
+  selectFeedback,
+  selectFeedbackError,
+  selectFeedbackLoading,
+} from '@/app/store/feedback/feedback.selectors';
+import { FeedbackCardComponent } from '@/app/components/feedback-card/feedback-card.component';
 import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
@@ -41,7 +45,10 @@ export class SuggestionsComponent implements OnInit {
   loading$: Observable<boolean> = new Observable<boolean>();
   error$: Observable<string | null> = new Observable<string | null>();
 
-  constructor(private router: Router, private store: Store) {}
+  constructor(
+    private router: Router,
+    private store: Store,
+  ) {}
   isMenuAppear = false;
 
   addFeedback(event: boolean) {
@@ -53,11 +60,10 @@ export class SuggestionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.store.dispatch(FeedbackActions.loadFeedback());
+    this.store.dispatch(FeedbackActions.loadFeedback());
 
-      this.feedbacks$ = this.store.select(selectFeedback);
-      this.loading$ = this.store.select(selectFeedbackLoading);
-      this.error$ = this.store.select(selectFeedbackError);
-      
+    this.feedbacks$ = this.store.select(selectFeedback);
+    this.loading$ = this.store.select(selectFeedbackLoading);
+    this.error$ = this.store.select(selectFeedbackError);
   }
 }

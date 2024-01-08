@@ -19,4 +19,5 @@ export class FeedbackService {
   loadFeadback() {
     return this.http.get(this.apiUrl + 'feedbacks').pipe(map((res: any) => res.feedbacks)) 
   }
+  
 }
