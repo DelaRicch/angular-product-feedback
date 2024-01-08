@@ -16,12 +16,20 @@ export interface FeedbackResponse {
   success: string
 }
 
+export interface Comment {
+  id: string;
+  userId: string;
+  feedbackId: string;
+  comment: string;
+}
+
 export interface Feedback {
   id?: string;
   title: string;
   category: string;
   details: string;
   Upvotes?: number;
+  comments?: Comment[];
   status?: string;
   createdAt?: string;
   updatedAt?: string;

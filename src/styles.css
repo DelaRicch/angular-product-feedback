@@ -1,10 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,300;1,400;1,500;1,600;1,700&display=swap');
-
-@tailwind base;
+@import "primeng/resources/primeng.css";
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
+
+@layer tailwind-base, primeng, tailwind-utilities;
+        
+@layer tailwind-base {
+    @tailwind base;
+}
+
+@layer tailwind-utilities {
+    @tailwind components;
+    @tailwind utilities;
+}
 
 html {
     font-family: 'Jost', sans-serif;
     scroll-behavior: smooth;
+}
+
+/* .p-menuitem-separator {
+    @apply w-full h-[1px] bg-[#3A4374]/20
+
+} */
+
+.p-menu-list  {
+    @apply divide-y divide-[#3A4374]/20
 }

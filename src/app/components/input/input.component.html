@@ -5,7 +5,7 @@
         <textarea 
         [id]="inputId"
         [formControl]="control"
-        [class]="(control.invalid && (control.touched || control.dirty)) ? 'border-2 border-error focus:outline-error' : ''"
+        [class]="(control.invalid && (control.touched || control.dirty)) ? 'border-2 border-error focus:outline-error' : 'border-none'"
         class="bg-[#F7F8FD] h-[6rem] w-full rounded-md px-6 py-2 mt-2 outline-none focus:outline-[#4661E6] resize-none"
         ></textarea>
     }
@@ -14,7 +14,7 @@
         [id]="inputId"
         [formControl]="control"
         [type]="type" 
-        [class]="(control.invalid && (control.touched || control.dirty)) ? 'border-2 border-error focus:outline-error' : ''"
+        [class]="(control.invalid && (control.touched || control.dirty)) ? 'border-2 border-error focus:outline-error' : 'border-none'"
         class="bg-[#F7F8FD] h-[3rem] w-full rounded-md px-6 mt-2 outline-none focus:outline-[#4661E6]">
     }
     

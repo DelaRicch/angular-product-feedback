@@ -1,5 +1,5 @@
 import { ButtonType, Feedback } from '@/types';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -10,9 +10,11 @@ import { Router } from '@angular/router';
 import { GoBackButtonComponent } from '../go-back-button/go-back-button.component';
 import { InputComponent } from '../input/input.component';
 import { ButtonComponent } from '@/app/shared/button/button.component';
-import { DropdownComponent } from '../dropdown/dropdown.component';
 import { ModalComponent } from '../modal/modal.component';
 import { FeedbackService } from '@/app/services/feedback.service';
+import { MenuModule } from 'primeng/menu';
+import { ButtonModule } from 'primeng/button';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-add-feedback',
@@ -22,17 +24,29 @@ import { FeedbackService } from '@/app/services/feedback.service';
     InputComponent,
     ReactiveFormsModule,
     ButtonComponent,
-    DropdownComponent,
     ModalComponent,
+    MenuModule,
+    ButtonModule
   ],
   templateUrl: './add-feedback.component.html',
   styleUrl: './add-feedback.component.css',
 })
-export class AddFeedbackComponent {
-  categories = ['feature', 'ui', 'ux', 'enhancement', 'bug'];
+export class AddFeedbackComponent implements OnInit {
+  constructor(
+    private router: Router,
+    private feedbackService: FeedbackService,
+  ) {}
+
+  categories: MenuItem[] = [
+    { label: 'Feature'},
+    { label: 'UI'},
+    { label: 'UX'},
+    { label: 'Enhancement'},
+    { label: 'Bug'},
+  ];
   ButtonType = ButtonType;
   displayFeatures = false;
-  selectedCategory = this.categories[0];
+  selectedCategory = this.categories[0].label;
   isSubmitting = false;
 
   formGroup = new FormGroup({
@@ -41,10 +55,7 @@ export class AddFeedbackComponent {
     feedback: new FormControl('', [Validators.required]),
   });
 
-  constructor(
-    private router: Router,
-    private feedbackService: FeedbackService,
-  ) {}
+
 
   addFeedback(event: SubmitEvent) {
     event.preventDefault();
@@ -77,9 +88,12 @@ export class AddFeedbackComponent {
     this.displayFeatures = event;
   }
 
-  selectCategory(event: string) {
-    this.selectedCategory = event;
+  selectCategory(item: MenuItem) {
+    this.selectedCategory = item.label;
     this.toggleDisplayFeatures(false);
     this.formGroup.get('category')?.setValue(this.selectedCategory);
+  }
+
+  ngOnInit(): void {
   }
 }
