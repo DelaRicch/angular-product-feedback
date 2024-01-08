@@ -16,6 +16,10 @@ export class FeedbackService {
     return this.http.post(this.apiUrl + 'add-feedback', data)
   }
 
+  editFeedback(data: Feedback) {
+    return this.http.patch(this.apiUrl + 'edit-feedback', data)
+  }
+
   loadFeadback() {
     return this.http.get(this.apiUrl + 'feedbacks').pipe(map((res: any) => res.feedbacks)) 
   }

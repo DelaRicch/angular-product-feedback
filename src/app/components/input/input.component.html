@@ -1,12 +1,12 @@
 <div class="flex flex-col gap-1">
     <label [for]="inputId" class="text-[#3A4374] text-sm font-bold capitalize">{{title}}</label>
-    <p class="line-clamp-1 text-gray text-sm">{{description}}</p>
+    <p class="line-clamp-3 text-gray text-sm">{{description}}</p>
     @if (type === 'textarea') {
         <textarea 
         [id]="inputId"
         [formControl]="control"
         [class]="(control.invalid && (control.touched || control.dirty)) ? 'border-2 border-error focus:outline-error' : 'border-none'"
-        class="bg-[#F7F8FD] h-[6rem] w-full rounded-md px-6 py-2 mt-2 outline-none focus:outline-[#4661E6] resize-none"
+        class="bg-[#F7F8FD] text-[#3A4374] h-[6rem] w-full rounded-md px-6 py-2 mt-2 outline-none focus:outline-[#4661E6] resize-none"
         ></textarea>
     }
     @else {
@@ -15,7 +15,7 @@
         [formControl]="control"
         [type]="type" 
         [class]="(control.invalid && (control.touched || control.dirty)) ? 'border-2 border-error focus:outline-error' : 'border-none'"
-        class="bg-[#F7F8FD] h-[3rem] w-full rounded-md px-6 mt-2 outline-none focus:outline-[#4661E6]">
+        class="bg-[#F7F8FD] text-[#3A4374] h-[3rem] w-full rounded-md px-6 mt-2 outline-none focus:outline-[#4661E6]">
     }
     
     @if(control.invalid && (control.touched || control.dirty)) {

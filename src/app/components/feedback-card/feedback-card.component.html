@@ -1,4 +1,4 @@
-<a [routerLink]="['/feedback-details/', feedback?.id]" routerLinkActive="router-link-active"  class="flex justify-between p-6 bg-white rounded-lg h-max">
+<div (click)="onSelectFeedback(feedback!)" [ngClass]="{'cursor-pointer': isDetailsPage}" class="flex justify-between p-6 bg-white rounded-lg h-max">
     <div class="flex flex-col-reverse md:flex-row gap-8">
     <app-upvote />
         <div class="flex flex-col gap-2">
@@ -7,8 +7,6 @@
             <div class="bg-button-white rounded-xl px-4 py-2 w-max text-[#4661E6]">
                 {{ feedback?.category?.length === 2 ? feedback?.category?.toUpperCase() : feedback?.category | titlecase }}
               </div>
-              
-              
         </div>
     </div>
     <div class="flex items-center justify-center gap-2">
@@ -17,4 +15,4 @@
           </svg>
           <span class="text-[#3A4374] font-bold">5</span>
     </div>
-</a>
+</div>
