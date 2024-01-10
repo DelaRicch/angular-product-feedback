@@ -17,7 +17,14 @@ export class FeedbackService {
   }
 
   editFeedback(data: Feedback) {
-    return this.http.patch(this.apiUrl + 'edit-feedback', data)
+    return this.http.put(this.apiUrl + 'edit-feedback', data)
+  }
+
+  deleteFeedback(data: Feedback) {
+    const options = {
+      body: data
+    }
+    return this.http.delete(this.apiUrl + 'delete-feedback', options)
   }
 
   loadFeadback() {

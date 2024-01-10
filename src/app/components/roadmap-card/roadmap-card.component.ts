@@ -25,7 +25,7 @@ export class RoadmapCardComponent implements OnInit {
 ngOnInit(): void {
 this.store.select(selectFeedback).subscribe((feedbacks) => {
   this.roadmaps[0].quantity = feedbacks.filter((feedback) => feedback.status === 'planned').length
-  this.roadmaps[1].quantity = feedbacks.filter((feedback) => feedback.status === 'inn-progress').length
+  this.roadmaps[1].quantity = feedbacks.filter((feedback) => feedback.status === 'in-progress').length
   this.roadmaps[2].quantity = feedbacks.filter((feedback) => feedback.status === 'live').length
 })
 

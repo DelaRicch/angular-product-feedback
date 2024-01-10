@@ -25,9 +25,9 @@ export interface Comment {
 
 export interface Feedback {
   id?: string;
-  title: string;
-  category: string;
-  details: string;
+  title?: string;
+  category?: string;
+  details?: string;
   Upvotes?: number;
   comments?: Comment[];
   status?: string;

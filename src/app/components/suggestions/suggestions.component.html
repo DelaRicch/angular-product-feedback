@@ -1,4 +1,4 @@
-<section class="mx-auto flex w-[90vw] flex-col md:gap-6 lg:flex-row">
+<section class="mx-auto flex w-[90vw] flex-col py-6 md:py-8 md:gap-6 lg:py-10 lg:flex-row">
   <app-sidebar (menuToggle)="menuToggle($event)" />
   <div class="relative flex min-h-[70vh] w-full flex-col gap-6">
     <app-suggestions-header />
@@ -10,7 +10,7 @@
     <!-- Feedback data  -->
     @if ((feedbacks$ | async)?.length && !(loading$ | async)) {
       <div
-        class="flex h-[70vh] flex-col gap-5 overflow-y-auto py-2 pr-2 sm:h-[58vh] lg:h-[70vh]"
+        class="flex max-h-[75vh] flex-col gap-5 overflow-y-auto py-2 pr-2"
       >
         @for (feedback of feedbacks$ | async; track feedback) {
           <app-feedback-card [isDetailsPage]="true" [feedback]="feedback" />
@@ -22,7 +22,7 @@
       class="flex flex-col items-center justify-center rounded-lg bg-white"
     >
       @if (!(feedbacks$ | async)?.length && !(loading$ | async)) {
-        <div class="my-[5vh] flex flex-col items-center gap-10 md:my-[10vh]">
+        <div class="flex flex-col items-center gap-10 my-[10vh]">
           <app-no-feedback />
           <div class="w-[11rem]">
             <app-button
