@@ -18,7 +18,20 @@ html {
     scroll-behavior: smooth;
 }
 
-
 .p-menu-list  {
     @apply divide-y divide-[#3A4374]/20
 }
+
+::-webkit-scrollbar {
+    width: 10px; 
+}
+
+::-webkit-scrollbar-track {
+      border-radius: 6px;
+      background: radial-gradient(166.82% 166.82% at 103.9% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+  @apply bg-[#3A4374] hover:opacity-80 transition-all duration-300 ease-linear rounded-lg;
+  }
+  
