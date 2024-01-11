@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './feature-card.component.css'
 })
 export class FeatureCardComponent  {
-  features = ["All", "UI", "UX", "Enhamcement", "Bug", "Feature"]
+  features = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"]
   selectedFeature = this.features[0]
 
   constructor(private feedbackService: FeedbackService) {
