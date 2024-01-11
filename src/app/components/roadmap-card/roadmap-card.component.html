@@ -1,7 +1,7 @@
 <div class="w-full h-[11rem] p-6 bg-white rounded-lg flex flex-col gap-6">
     <div class="flex items-center justify-between">
         <span class="capitalize text-[#3A4374] text-lg font-bold">roadmap</span>
-        <a class="text-gray text-sm underline font-semibold" [routerLink]="['']">View</a>
+        <a class="text-gray text-sm underline font-semibold" [routerLink]="['roadmap-details']">View</a>
     </div>
     <div class="flex flex-col gap-2">
         @for(roadmap of roadmaps; track roadmap.label){

@@ -1,4 +1,3 @@
-import { FeedbackService } from '@/app/services/feedback.service';
 import { selectFeedback } from '@/app/store/feedback/feedback.selectors';
 import { RoadmapProps } from '@/types';
 import { Component, OnInit } from '@angular/core';

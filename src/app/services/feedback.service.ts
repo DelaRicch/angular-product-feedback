@@ -17,7 +17,7 @@ export class FeedbackService {
   }
 
   editFeedback(data: Feedback) {
-    return this.http.put(this.apiUrl + 'edit-feedback', data)
+    return this.http.patch(this.apiUrl + 'edit-feedback', data)
   }
 
   deleteFeedback(data: Feedback) {

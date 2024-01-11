@@ -8,5 +8,4 @@ import { Component } from '@angular/core';
   styleUrl: './upvote.component.css'
 })
 export class UpvoteComponent {
-
 }
