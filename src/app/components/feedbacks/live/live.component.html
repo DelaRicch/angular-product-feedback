@@ -1,7 +1,13 @@
 <div class="flex flex-col gap-8">
     <div class="flex flex-col gap-1">
-        <h4 class="text-[#3A4374] font-bold text-xl">Live (2)</h4>
+        <h4 class="text-[#3A4374] font-bold text-xl">Live ({{liveFeedbacks.length}})</h4>
         <span class="text-gray">Ideas prioritized for research</span>
     </div>
-    <app-card feedbackType="live" />
+    @for(feedback of liveFeedbacks; track feedback.id) {
+        <div class="flex flex-col gap-4">
+            @if(feedback.status === 'live'){
+                <app-card [feedback]="feedback" feedbackType="live" />
+            }
+        </div>
+    }
 </div>
