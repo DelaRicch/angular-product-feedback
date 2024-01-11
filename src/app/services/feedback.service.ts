@@ -2,13 +2,16 @@ import { environment } from '@/environments/environment.development';
 import { Feedback } from '@/types';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { map, filter, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FeedbackService {
   private apiUrl = environment.apiUrl;
+
+  private feedbackSubject = new Subject<string>()
+  feedbackFilter$ = this.feedbackSubject.asObservable()
 
   constructor(private http: HttpClient) { }
 
@@ -29,6 +32,10 @@ export class FeedbackService {
 
   loadFeadback() {
     return this.http.get(this.apiUrl + 'feedbacks').pipe(map((res: any) => res.feedbacks)) 
+  }
+
+  filterFeedbacks(filter: string) {
+    this.feedbackSubject.next(filter)
   }
   
 }

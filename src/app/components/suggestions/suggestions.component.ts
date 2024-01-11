@@ -19,6 +19,7 @@ import {
 } from '@/app/store/feedback/feedback.selectors';
 import { FeedbackCardComponent } from '@/app/components/feedback-card/feedback-card.component';
 import { LoadingComponent } from '../loading/loading.component';
+import { FeedbackService } from '@/app/services/feedback.service';
 
 @Component({
   selector: 'app-suggestions',
@@ -42,16 +43,30 @@ import { LoadingComponent } from '../loading/loading.component';
 })
 export class SuggestionsComponent implements OnInit {
   feedbacks$: Observable<Feedback[]> = new Observable<Feedback[]>();
+  feedbacks = [] as Feedback[];
   loading$: Observable<boolean> = new Observable<boolean>();
   error$: Observable<string | null> = new Observable<string | null>();
 
   constructor(
     private router: Router,
     private store: Store,
-  ) {}
+    private feedbackService: FeedbackService
+  ) {
+    this.feedbackService.feedbackFilter$.subscribe((filter) => {
+      if (filter === 'All') {
+        this.store.select(selectFeedback).subscribe((res) => {
+         this.feedbacks = res;
+        });
+      } else {
+        this.store.select(selectFeedback).subscribe((res) => {
+         this.feedbacks = res.filter((feedback) => feedback.category === filter);
+        });
+      }
+    })
+  }
   isMenuAppear = false;
 
-  addFeedback(event: boolean) {
+  addFeedback() {
     this.router.navigate(['/add-feedback']);
   }
 
@@ -62,7 +77,7 @@ export class SuggestionsComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(FeedbackActions.loadFeedback());
 
-    this.feedbacks$ = this.store.select(selectFeedback);
+    // this.feedbacks$ = this.store.select(selectFeedback);
     this.loading$ = this.store.select(selectFeedbackLoading);
     this.error$ = this.store.select(selectFeedbackError);
   }

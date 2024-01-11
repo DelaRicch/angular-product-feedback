@@ -8,11 +8,11 @@
     }
 
     <!-- Feedback data  -->
-    @if ((feedbacks$ | async)?.length && !(loading$ | async)) {
+    @if (feedbacks.length && !(loading$ | async)) {
       <div
         class="flex max-h-[75vh] flex-col gap-5 overflow-y-auto py-2 pr-2"
       >
-        @for (feedback of feedbacks$ | async; track feedback) {
+        @for (feedback of feedbacks; track feedback.id) {
           <app-feedback-card [isDetailsPage]="true" [feedback]="feedback" />
         }
       </div>
@@ -21,12 +21,12 @@
     <section
       class="flex flex-col items-center justify-center rounded-lg bg-white"
     >
-      @if (!(feedbacks$ | async)?.length && !(loading$ | async)) {
+      @if (!feedbacks.length && !(loading$ | async)) {
         <div class="flex flex-col items-center gap-10 my-[10vh]">
           <app-no-feedback />
           <div class="w-[11rem]">
             <app-button
-              (onClick)="addFeedback($event)"
+              (onClick)="addFeedback()"
               backgroundColor="#AD1FEA"
             >
               <div class="flex items-center gap-2">
