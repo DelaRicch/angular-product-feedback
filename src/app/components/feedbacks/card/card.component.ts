@@ -1,3 +1,4 @@
+import { Feedback } from '@/types';
 import { Component, Input, OnInit } from '@angular/core';
 
 type FeedbackTypeProp = 'planned' | 'in-progress' | 'live';
@@ -14,6 +15,7 @@ type FeedbackTypeProp = 'planned' | 'in-progress' | 'live';
 export class CardComponent implements OnInit {
 
   @Input() feedbackType: FeedbackTypeProp = 'planned';
+  @Input() feedback = {} as Feedback;
 
   feedbackDetails = {
     label: '',

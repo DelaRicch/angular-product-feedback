@@ -28,7 +28,7 @@ export interface Feedback {
   title?: string;
   category?: string;
   details?: string;
-  Upvotes?: number;
+  upvotes?: number;
   comments?: Comment[];
   status?: string;
   createdAt?: string;
