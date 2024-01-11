@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 type FeedbackTypeProp = 'planned' | 'in-progress' | 'live';
 
@@ -11,7 +11,7 @@ type FeedbackTypeProp = 'planned' | 'in-progress' | 'live';
 })
 
 
-export class CardComponent {
+export class CardComponent implements OnInit {
 
   @Input() feedbackType: FeedbackTypeProp = 'planned';
 
@@ -20,22 +20,22 @@ export class CardComponent {
     color: '',
   }
 
-  constructor() { 
-    if (this.feedbackType === 'planned') {
-      this.feedbackDetails = {
-        label: 'Planned',
-        color: '#F49F85',
-      };
-    } else if (this.feedbackType === 'in-progress') {
-      this.feedbackDetails = {
-        label: 'In Progress',
-        color: '#AD1FEA',
-      };
-    } else if (this.feedbackType === 'live') {
-      this.feedbackDetails = {
-        label: 'Live',
-        color: '#62BCFA',
-      };
-    }
+ngOnInit(): void {
+  if (this.feedbackType === 'planned') {
+    this.feedbackDetails = {
+      label: 'Planned',
+      color: '#F49F85',
+    };
+  } else if (this.feedbackType === 'in-progress') {
+    this.feedbackDetails = {
+      label: 'In Progress',
+      color: '#AD1FEA',
+    };
+  } else if (this.feedbackType === 'live') {
+    this.feedbackDetails = {
+      label: 'Live',
+      color: '#62BCFA',
+    };
   }
+}
 }
