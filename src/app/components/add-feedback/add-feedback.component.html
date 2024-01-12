@@ -1,43 +1,78 @@
 <div
-  class="mx-auto flex w-screen flex-col md:justify-center gap-20 h-full overflow-y-auto px-6 py-8 md:py-10 sm:w-[33rem]"
+  class="mx-auto flex h-full w-screen flex-col gap-20 overflow-y-auto px-6 py-8 sm:w-[33rem] md:justify-center md:py-10"
 >
   <app-go-back-button />
   <form
     [formGroup]="formGroup"
     (submit)="addFeedback($event)"
-    class="relative flex flex-col gap-6 rounded-md bg-white h-max px-4 pt-10 sm:px-8"
+    class="relative flex h-max flex-col gap-6 rounded-md bg-white px-4 pt-10 sm:px-8"
   >
     <div class="absolute -top-8">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="56"
-        height="56"
-        viewBox="0 0 56 56"
-        fill="none"
-      >
-        <circle cx="28" cy="28" r="28" fill="url(#paint0_radial_0_2017)" />
-        <path
-          d="M30.3425 36V30.1657H36.0295V25.8637H30.3425V20H25.7459V25.8637H20V30.1657H25.7459V36H30.3425Z"
-          fill="white"
-        />
-        <defs>
-          <radialGradient
-            id="paint0_radial_0_2017"
-            cx="0"
-            cy="0"
-            r="1"
-            gradientUnits="userSpaceOnUse"
-            gradientTransform="translate(58.184 -5.81647) rotate(129.411) scale(93.4169)"
-          >
-            <stop stop-color="#E84D70" />
-            <stop offset="0.530886" stop-color="#A337F6" />
-            <stop offset="1" stop-color="#28A7ED" />
-          </radialGradient>
-        </defs>
-      </svg>
+      @if (isEditMode) {
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+        >
+          <circle cx="20" cy="20" r="20" fill="url(#paint0_radial_0_129)" />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M20.5268 14.4656L23.2569 12L28 16.4426L25.4162 19.0493L20.5268 14.4656ZM11 28.713C11.6704 25.9211 13.539 18.7818 13.539 18.7818L19.5124 15.3671L24.4871 19.8979L20.6864 25.4371L11.2279 29L15.7117 24.8991C16.471 25.1749 17.5434 24.9255 18.1232 24.3063C18.8885 23.4931 18.8311 22.23 17.9944 21.4855C17.1577 20.7411 15.7951 20.7411 15.0298 21.5543C14.4597 22.1606 14.2633 23.2302 14.5891 23.9353L11 28.713Z"
+            fill="white"
+          />
+          <defs>
+            <radialGradient
+              id="paint0_radial_0_129"
+              cx="0"
+              cy="0"
+              r="1"
+              gradientUnits="userSpaceOnUse"
+              gradientTransform="translate(41.56 -4.15462) rotate(129.411) scale(66.7263)"
+            >
+              <stop stop-color="#E84D70" />
+              <stop offset="0.530886" stop-color="#A337F6" />
+              <stop offset="1" stop-color="#28A7ED" />
+            </radialGradient>
+          </defs>
+        </svg>
+      } @else {
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="56"
+          height="56"
+          viewBox="0 0 56 56"
+          fill="none"
+        >
+          <circle cx="28" cy="28" r="28" fill="url(#paint0_radial_0_2017)" />
+          <path
+            d="M30.3425 36V30.1657H36.0295V25.8637H30.3425V20H25.7459V25.8637H20V30.1657H25.7459V36H30.3425Z"
+            fill="white"
+          />
+          <defs>
+            <radialGradient
+              id="paint0_radial_0_2017"
+              cx="0"
+              cy="0"
+              r="1"
+              gradientUnits="userSpaceOnUse"
+              gradientTransform="translate(58.184 -5.81647) rotate(129.411) scale(93.4169)"
+            >
+              <stop stop-color="#E84D70" />
+              <stop offset="0.530886" stop-color="#A337F6" />
+              <stop offset="1" stop-color="#28A7ED" />
+            </radialGradient>
+          </defs>
+        </svg>
+      }
     </div>
-    <span class="text-lg font-bold capitalize text-[#3A4374] sm:text-2xl"
-     >{{isEditMode ? 'Editing \'' + selectedFeedback?.title! + '\'' : 'Create New Feedback'}}</span>
+    <span class="text-lg font-bold capitalize text-[#3A4374] sm:text-2xl">{{
+      isEditMode
+        ? "Editing '" + selectedFeedback?.title! + "'"
+        : "Create New Feedback"
+    }}</span>
 
     <div class="flex flex-col gap-6">
       <app-input
@@ -55,18 +90,18 @@
           (onClick)="category.toggle($event); toggleDisplayFeatures(true)"
           styleClass="w-full bg-[#F7F8FD] h-[3rem] rounded-lg px-6 flex items-center justify-between outline-none focus:outline-[#4661E6]"
         >
-            <span class="capitalize text-[#3A4374]">{{ selectedCategory }}</span>
-            <svg
-              class="transition-all duration-300 ease-linear"
-              [class]="displayFeatures ? 'rotate-180 transform' : ''"
-              xmlns="http://www.w3.org/2000/svg"
-              width="10"
-              height="7"
-              viewBox="0 0 10 7"
-              fill="none"
-            >
-              <path d="M1 1L5 5L9 1" stroke="#4661E6" stroke-width="2" />
-            </svg>
+          <span class="capitalize text-[#3A4374]">{{ selectedCategory }}</span>
+          <svg
+            class="transition-all duration-300 ease-linear"
+            [class]="displayFeatures ? 'rotate-180 transform' : ''"
+            xmlns="http://www.w3.org/2000/svg"
+            width="10"
+            height="7"
+            viewBox="0 0 10 7"
+            fill="none"
+          >
+            <path d="M1 1L5 5L9 1" stroke="#4661E6" stroke-width="2" />
+          </svg>
         </p-button>
         <p-menu
           appendTo="body"
@@ -108,23 +143,23 @@
             <span class="text-sm font-bold text-[#3A4374]">Update Status</span>
             <p class="text-sm text-gray">Change feature state</p>
           </div>
-  
+
           <p-button
             (onClick)="status.toggle($event); toggleDisplayStatus(true)"
             styleClass="w-full bg-[#F7F8FD] h-[3rem] rounded-lg px-6 flex items-center justify-between outline-none focus:outline-[#4661E6]"
           >
-              <span class="capitalize text-[#3A4374]">{{ selectedStatus }}</span>
-              <svg
-                class="transition-all duration-300 ease-linear"
-                [class]="displayStatus ? 'rotate-180 transform' : ''"
-                xmlns="http://www.w3.org/2000/svg"
-                width="10"
-                height="7"
-                viewBox="0 0 10 7"
-                fill="none"
-              >
-                <path d="M1 1L5 5L9 1" stroke="#4661E6" stroke-width="2" />
-              </svg>
+            <span class="capitalize text-[#3A4374]">{{ selectedStatus }}</span>
+            <svg
+              class="transition-all duration-300 ease-linear"
+              [class]="displayStatus ? 'rotate-180 transform' : ''"
+              xmlns="http://www.w3.org/2000/svg"
+              width="10"
+              height="7"
+              viewBox="0 0 10 7"
+              fill="none"
+            >
+              <path d="M1 1L5 5L9 1" stroke="#4661E6" stroke-width="2" />
+            </svg>
           </p-button>
           <p-menu
             appendTo="body"
@@ -168,50 +203,74 @@
         description="Include any specific comments on what should be improved, added, etc."
       />
 
-      <div [class]="isEditMode ? 'justify-between' : 'sm:justify-end' " class="flex flex-col-reverse gap-4 sm:flex-row">
+      <div
+        [class]="isEditMode ? 'justify-between' : 'sm:justify-end'"
+        class="flex flex-col-reverse gap-4 sm:flex-row"
+      >
         @if (isEditMode) {
-          <p-button (onClick)="showModal()" type="button" styleClass="w-full h-[2.7rem] flex items-center justify-center rounded-lg px-6 font-bold text-sm text-button-white transition-all duration-300 ease-linear hover:opacity-80 bg-[#D73737]" >Delete</p-button>
+          <p-button
+            (onClick)="showModal()"
+            type="button"
+            styleClass="w-full h-[2.7rem] flex items-center justify-center rounded-lg px-6 font-bold text-sm text-button-white transition-all duration-300 ease-linear hover:opacity-80 bg-[#D73737]"
+            >Delete</p-button
+          >
         }
-        <div class="flex flex-col-reverse sm:flex-row w-full sm:w-max sm:items-center gap-4">
-          <p-button (onClick)="cancelFeedBack()" type="button" styleClass=" flex items-center justify-center w-full h-[2.7rem] rounded-lg px-6 font-bold text-sm text-button-white transition-all duration-300 ease-linear hover:opacity-80 bg-[#3A4374]">
+        <div
+          class="flex w-full flex-col-reverse gap-4 sm:w-max sm:flex-row sm:items-center"
+        >
+          <p-button
+            (onClick)="cancelFeedBack()"
+            type="button"
+            styleClass=" flex items-center justify-center w-full h-[2.7rem] rounded-lg px-6 font-bold text-sm text-button-white transition-all duration-300 ease-linear hover:opacity-80 bg-[#3A4374]"
+          >
             Cancel
           </p-button>
-          <p-button [disabled]="isSubmitting || formGroup.invalid" type="submit" styleClass=" flex items-center justify-center w-full h-[2.7rem] rounded-lg px-6 font-bold text-sm text-button-white transition-all duration-300 ease-linear hover:opacity-80 disabled:opacity-75 bg-[#AD1FEA]">
-            @if (isSubmitting ) {
-              @if (isEditMode && isSubmitting){
-                <span>
-                  <i class="fa fa-spinner fa-spin"></i> Updating...
-                </span>
-              }  @else {
-                <span>
-                  <i class="fa fa-spinner fa-spin"></i> Creating...
-                </span>
+          <p-button
+            [disabled]="isSubmitting || formGroup.invalid"
+            type="submit"
+            styleClass=" flex items-center justify-center w-full h-[2.7rem] rounded-lg px-6 font-bold text-sm text-button-white transition-all duration-300 ease-linear hover:opacity-80 disabled:opacity-75 bg-[#AD1FEA]"
+          >
+            @if (isSubmitting) {
+              @if (isEditMode && isSubmitting) {
+                <span> <i class="fa fa-spinner fa-spin"></i> Updating... </span>
+              } @else {
+                <span> <i class="fa fa-spinner fa-spin"></i> Creating... </span>
               }
-            }
-                    
-            @else if(isEditMode){
+
+            } @else if (isEditMode) {
               <span>Save Changes</span>
-            }
-            @else {
+            } @else {
               <span>Add Feedback</span>
             }
           </p-button>
         </div>
       </div>
     </div>
-    <p-dialog [(visible)]="displayModal" [modal]="true" >
+    <p-dialog [(visible)]="displayModal" [modal]="true">
       <ng-template pTemplate="headless">
-        <div class="flex flex-col gap-6 rounded-lg p-4 bg-white shadow-lg border border-black/30 shadow-black/30 w-[70vw] sm:w-[60vw] lg:w-[40vw] h-max text-[#3A4374] backdrop-blur-md">
+        <div
+          class="flex h-max w-[70vw] flex-col gap-6 rounded-lg border border-black/30 bg-white p-4 text-[#3A4374] shadow-lg shadow-black/30 backdrop-blur-md sm:w-[60vw] lg:w-[40vw]"
+        >
           <div>
-            <h6 class="text-2xl font-bold">Delete Feedback</h6>      
+            <h6 class="text-2xl font-bold">Delete Feedback</h6>
             <h6>Are you sure you want to delete this feedback?</h6>
-            <div class="flex flex-col sm:flex-row sm:items-center gap-3 justify-end mt-4">
-              <p-button (onClick)="closeModal()" styleClass="bg-[#3A4374] py-2 px-6 text-white rounded-lg w-full flex items-center justify-center">Cancel</p-button>
-              <p-button (onClick)="deleteFeedback()" styleClass="bg-red-500 py-2 px-6 text-white rounded-lg w-full flex items-center justify-center">Delete</p-button>
-          </div>
+            <div
+              class="mt-4 flex flex-col justify-end gap-3 sm:flex-row sm:items-center"
+            >
+              <p-button
+                (onClick)="closeModal()"
+                styleClass="bg-[#3A4374] py-2 px-6 text-white rounded-lg w-full flex items-center justify-center"
+                >Cancel</p-button
+              >
+              <p-button
+                (onClick)="deleteFeedback()"
+                styleClass="bg-red-500 py-2 px-6 text-white rounded-lg w-full flex items-center justify-center"
+                >Delete</p-button
+              >
+            </div>
           </div>
         </div>
-    </ng-template>
+      </ng-template>
     </p-dialog>
   </form>
 </div>
