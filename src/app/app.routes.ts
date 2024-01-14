@@ -18,7 +18,6 @@ const AddFeedbackComponent = () =>
     (m) => m.RoadmapDetailsComponent,
   );
 
-  const UserAuth = () => import('./components/user-auth/user-auth.component').then(m => m.UserAuthComponent);
 
 export const routes: Routes = [
   { path: '', loadComponent: SuggestionsComponent },
@@ -26,6 +25,4 @@ export const routes: Routes = [
   { path: 'add-feedback', loadComponent: AddFeedbackComponent },
   { path: 'feedback-details/:id', loadComponent: FeedbackDetailsComponent },
   {path: 'edit-feedback/:id', loadComponent: AddFeedbackComponent},
-  {path: 'login', loadComponent: UserAuth},
-  {path: 'sign-up', loadComponent: UserAuth},
 ];

@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { selectFeedback } from '@/app/store/feedback/feedback.selectors';
 import { MenuItem } from 'primeng/api';
 import { MenuModule } from 'primeng/menu';
+import { UserService } from '@/app/services/user.service';
 
 @Component({
   selector: 'app-suggestions-header',
@@ -33,6 +34,7 @@ export class SuggestionsHeaderComponent implements OnInit {
   constructor(
     private router: Router,
     private store: Store,
+    private userService: UserService
   ) {}
   ButtonType = ButtonType;
 
@@ -46,7 +48,11 @@ handleSelectItem(item: MenuItem) {
   this.isMenuSelected = true
 }
 
-  addFeedback(event: boolean) {
+  addFeedback() {
+    if (!this.userService.isAuthenticated()) {
+      this.userService.displayAuthModal.set(true);
+      return;
+    }
     this.router.navigate(['/add-feedback']);
   }
 

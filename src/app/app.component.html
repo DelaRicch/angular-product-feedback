@@ -1,4 +1,10 @@
 <main class="bg-[#F7F8FD] w-screen h-screen">
+   <p-dialog header="Login with google" [modal]="true" [draggable]="false" [(visible)]="displayAuthModal" (onHide)="hideAuthModal()" styleClass="w-[85vw] mx-auto sm:w-[75vw] md:w-[35rem]">
+      <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+   </p-dialog>
    <p-toast></p-toast>
    <router-outlet></router-outlet>
 </main>
